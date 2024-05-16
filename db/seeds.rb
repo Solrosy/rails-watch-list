@@ -17,9 +17,9 @@ movie3 = Movie.create(title: "Titanic", overview: "101-year-old Rose DeWitt Buka
 movie4 = Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal mastermind, gathers a crew of female thieves to pull off the heist of the century.", poster_url: "https://image.tmdb.org/t/p/original/MvYpKlpFukTivnlBhizGbkAe3v.jpg", rating: 7.0)
 puts "Movies created"
 
-list1 = List.create(name: "List 1")
-List.create(name: "List 2")
-List.create(name: "List 3")
+list1 = List.create(name: "Sonja's Movies")
+List.create(name: "Linneas's Movies")
+List.create(name: "Tim's Movies")
 puts "Lists created"
 
 
@@ -28,5 +28,3 @@ Bookmark.create(comment: "Bookmark comment", movie: movie2, list: list1)
 Bookmark.create(comment: "Bookmark comment", movie: movie3, list: list1)
 Bookmark.create(comment: "Bookmark comment", movie: movie4, list: list1)
 puts "Bookmarks created"
-
-
