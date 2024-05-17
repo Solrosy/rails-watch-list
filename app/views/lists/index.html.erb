@@ -1,7 +1,11 @@
 <div class="container p-3">
   <nav class="navbar navbar-dark bg-dark justify-content-between rounded-top-5">
     <span class="navbar-brand p-3">My Movie Library</span>
-    <span class="px-3"><%= link_to "+ Add new list", new_list_url %></span>
+    <span class="px-3">
+    <%= link_to new_list_url do %>
+      <i class="fa-solid fa-plus h1"></i>
+    <% end %>
+    </span>
   </nav>
 
 <div class="shadow border">

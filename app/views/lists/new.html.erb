@@ -4,11 +4,6 @@
     <span class="px-3"><%= link_to "Back", root_path %></span>
   </nav>
 
-<div class="shadow border p-3 rounded-bottom-5">
-  <%= simple_form_for(@list) do |f| %>
-    <%= f.input :name %>
-    <%= f.submit %>
-  <% end %>
-</div>
+<%= render 'lists/list_form' %>
 
 </div>
