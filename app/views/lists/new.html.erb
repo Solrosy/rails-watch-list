@@ -4,6 +4,8 @@
     <span class="px-3"><%= link_to "Back", root_path %></span>
   </nav>
 
-<%= render 'lists/list_form' %>
+  <div class="border">
+    <%= render 'lists/list_form', list: @list %>
+</div>
 
 </div>

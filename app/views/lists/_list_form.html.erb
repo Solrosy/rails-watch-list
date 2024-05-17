@@ -1,7 +1,50 @@
 <div class="p-3">
-  <%= simple_form_for(list) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit %>
+  <%= form_with model: list, local: true, html: { class: 'needs-validation', novalidate: true } do |f| %>
+    <div class="mb-3">
+      <%= f.label :name, class: 'form-label' %>
+      <%= f.text_field :name, class: 'form-control', required: true, value: @list.name %>
+      <% if @list.errors[:name].any? %>
+        <div class="invalid-feedback">
+          <%= @list.errors[:name].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :photo, class: 'form-label' %>
+      <%= f.file_field :photo, class: 'form-control', required: false %>
+      <% if @list.errors[:photo].any? %>
+        <div class="invalid-feedback">
+          <%= @list.errors[:photo].first %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    </div>
   <% end %>
 </div>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+</script>
