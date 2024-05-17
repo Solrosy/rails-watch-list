@@ -28,34 +28,29 @@
         <div class="container p-0 mt-3">
           <div class="p-3">
             <%= form_with model: [@list, @bookmark], local: true, html: { class: 'needs-validation', novalidate: true } do |f| %>
-            <div class="mb-3">
-              <%= f.label :movie_id, 'Movie', class: 'form-label' %>
-              <%= f.collection_select :movie_id, @list.movies_not_in_list, :id, :title, {}, { class: 'form-select', required: true } %>
-              <% if @bookmark.errors[:movie_id].any? %>
-                <div class="invalid-feedback">
-                  <%= @bookmark.errors[:movie_id].first %>
-                </div>
-              <% end %>
-            </div>
+              <div class="mb-3">
+                <%= f.label :movie_id, 'Movie', class: 'form-label' %>
+                <%= f.collection_select :movie_id, @list.movies_not_in_list, :id, :title, {}, { class: 'form-select', required: true } %>
+                <% if @bookmark.errors[:movie_id].any? %>
+                  <div class="invalid-feedback">
+                    Pick a movie
+                  </div>
+                <% end %>
+              </div>
 
-            <div class="mb-3">
-              <%= f.label :comment, class: 'form-label' %>
-              <%= f.text_area :comment, class: 'form-control', required: true %>
-              <% if @bookmark.errors[:comment].any? %>
+              <div class="mb-3">
+                <%= f.label :comment, class: 'form-label' %>
+                <%= f.text_area :comment, class: 'form-control', required: true, minlength: 6 %>
                 <div class="invalid-feedback">
-                  <%= @bookmark.errors[:comment].first %>
+                  Enter more than 6 characters
                 </div>
-              <% end %>
-            </div>
+              </div>
 
-            <div class="form-actions">
-              <%= f.submit 'Add', class: 'btn btn-primary' %>
-            </div>
+              <div class="form-actions">
+                <%= f.submit 'Add', class: 'btn btn-primary' %>
+              </div>
             <% end %>
           </div>
-
-
-
         </div>
       </div>
     </div>
@@ -84,7 +79,7 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <% @list.bookmarks.each do |bookmark| %>
   <div class="col">
-    <div class="card h-100">
+    <div  class="card h-100">
       <%= image_tag bookmark.movie.poster_url, class:"card-img-top", alt: bookmark.movie.poster_url %>
       <div class="card-body">
         <h5 class="card-title"><%= bookmark.movie.overview %></h5>
